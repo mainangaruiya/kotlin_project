@@ -1,0 +1,72 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Username'
+        TextInput:
+            id: username_input
+        Label:
+            text: 'Password'
+        TextInput:
+            id: password_input
+            password: True
+        Button:
+            text: 'Login'
+            on_release: root.verify_credentials(username_input.text, password_input.text)
+        Button:
+            text: 'Sign Up'
+            on_release: app.root.current = 'signup'
+        Label:
+            id: error_label
+            text: ''
+
+<SignUpScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Create an Account'
+        Label:
+            text: 'Username'
+        TextInput:
+            id: username_input
+        Label:
+            text: 'Password'
+        TextInput:
+            id: password_input
+            password: True
+        Button:
+            text: 'Sign Up'
+            on_release: root.sign_up(username_input.text, password_input.text)
+        Button:
+            text: 'Back to Login'
+            on_release: app.root.current = 'login'
+        Label:
+            id: error_label
+            text: ''
+
+<AdminPanel>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Admin Panel'
+        Button:
+            text: 'Logout'
+            on_release: app.root.current = 'login'
+
+<UserPanel>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'User Panel'
+        Button:
+            text: 'Deposit $100'
+            on_release: root.deposit(100)
+        Button:
+            text: 'Withdraw $50'
+            on_release: root.withdraw(50)
+        Label:
+            id: balance_label
+            text: ''
+        Label:
+            id: error_label
+            text: ''
